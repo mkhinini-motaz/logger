@@ -1,0 +1,36 @@
+{
+  "name": "simple-logger",
+  "version": "1.0.1",
+  "description": "simple-logger is package for all develepors that appreciate simple packages, this package simply add some styling to your logs using Twitter/Bootstrap4 colors with the same colors names as methods names for logging",
+  "main": "index.js",
+  "scripts": {
+    "start": "node test.js",
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mkhinini-motaz/logger.git"
+  },
+  "keywords": [
+    "logging",
+    "log",
+    "logger",
+    "simple",
+    "simple-logger",
+    "msaken",
+    "m'saken",
+    "4070",
+    "tunisie",
+    "tunisia",
+    "motaz",
+    "moatez",
+    "mkhinini",
+    "minimum dependencies"
+  ],
+  "author": "Moatez Mkhinini <mkhinini.motaz@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mkhinini-motaz/logger/issues"
+  },
+  "homepage": "https://github.com/mkhinini-motaz/logger#readme"
+}
