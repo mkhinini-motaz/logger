@@ -2,7 +2,9 @@
 ## Msk log
 
 **msk-log** is a very simple and small package for all developers that appreciate simple packages, this package simply add some styling to your logs using Twitter/Bootstrap4 colors with the same colors names as methods names for logging.
+
 This package was designed so that it has the minimum code in it and yet insure a functionality that many of you requires when dealing with logs, persisting those logs into a file, and of course if you don't want to you can simple enjoy the colors that this package has to offer.
+
 This package represents a series of functions that were writing using the popular **chalk** package.
 If you have any suggestions on how we can improve this package while keeping it as simple as possible, please let us know.
 
@@ -13,7 +15,7 @@ To install the package, simply run this command at the root of your project :
 this will install the **msk-log** package as well as the **chalk** package if you don't have it already.
 To see the output of all the methods available, run the following command :
 
-    node test.js node_modules/simple-log/test.js
+    node ./node_modules/simple-log/test.js
 
 ## Usage
 In your script, require the logger with the following line of code :
