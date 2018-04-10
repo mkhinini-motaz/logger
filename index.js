@@ -7,8 +7,15 @@ var chalk = require("chalk");
 var fs = require("fs");
 
 var logger = {};
-var logFilePath = './logs/log.txt';
+var dir = './logs' ;
+
+var logFilePath = dir +'/system.log';
+
 logger.isPersistingLogs = true;
+
+if (!fs.existsSync(dir)){
+    fs.mkdirSync(dir);
+}
 
 /**
  * @function persistLogs Allows you to activate or deactivate persisting logs

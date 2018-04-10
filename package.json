@@ -1,7 +1,7 @@
 {
   "name": "simple-log",
   "version": "1.0.1",
-  "description": "simple-logger is package for all develepors that appreciate simple packages, this package simply add some styling to your logs using Twitter/Bootstrap4 colors with the same colors names as methods names for logging",
+  "description": "simple-logger is package for all developers that appreciate simple packages, this package simply add some styling to your logs using Twitter/Bootstrap4 colors with the same colors names as methods names for logging",
   "main": "index.js",
   "scripts": {
     "start": "node test.js",
