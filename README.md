@@ -28,6 +28,7 @@ Behind the scenes, this will execute the **console.log** command and then persis
 Right now, **msk-log** only has one configuration methods that allows you to enable or disable persisting the logs in a file on the hard drive.
 #### usage :
 Just call this method with an argument that will evaluate to true if you want to activate persisting logs in a file *(default option)* , or pass a value that will evaluate to false to disable persisting logs.
+     
     logger.persistLogs(truthyValue)
 
 ### Output methods
@@ -49,4 +50,5 @@ If you want to add some message or data to the log file without showing it on th
 
 ## Copyright
 Feel free to use, modify, publish or sell this package as you like.
+
 **(c) Moatez Mkhinini <mkhinini.motaz@gmail.com>**
