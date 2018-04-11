@@ -86,6 +86,17 @@ logger.error = function(error) {
 };
 
 /**
+ * @function dark Adds some styling when logging some information to the console with the bootstrap4 dark style
+ *
+ * @param {string} data The data to log as a danger info
+ * @param {boolean} background Edit background color instead of text color
+ */
+logger.dark = function(data, background = false) {
+    console.log(background ? chalk.bgRgb(0, 0, 0).whiteBright(data) : chalk.black(data));
+    logger.appendToLogFile("[ " + (new Date()).toString() + " ] : " + data);
+};
+
+/**
  * @function info Adds some styling like info in Twitter-Bootstrap4 when logging some message to the console
  *
  * @param {string} data The data to log as a warning
@@ -94,7 +105,18 @@ logger.error = function(error) {
  */
 logger.info = function(data, background = false) {
     // cyan
-    console.log(background ? chalk.bgCyan(data) : chalk.rgb(23, 162, 184)(data));
+    console.log(background ? chalk.bgRgb(23, 162, 184)(data) : chalk.rgb(23, 162, 184)(data));
+    logger.appendToLogFile("[ " + (new Date()).toString() + " ] : " + data);
+};
+
+/**
+ * @function light Adds some styling when logging some information to the console with the bootstrap4 light style
+ *
+ * @param {string} data The data to log as a danger info
+ * @param {boolean} background Edit background color instead of text color
+ */
+logger.light = function(data, background = false) {
+    console.log(background ? chalk.bgWhite.black(data) : chalk.white(data));
     logger.appendToLogFile("[ " + (new Date()).toString() + " ] : " + data);
 };
 
@@ -131,6 +153,19 @@ logger.primary = function(data, background = false) {
 };
 
 /**
+ * @function secondary Adds some styling when logging some information to the console with the bootstrap4 secondary style
+ *
+ * @param {string} data The data to log as a warning
+ * @param {boolean} background Edit background color instead of text color
+ *
+ */
+logger.secondary = function(data, background = false) {
+    // cyan
+    console.log(background ? chalk.bgRgb(108, 117, 125)(data) : chalk.rgb(108, 117, 125)(data));
+    logger.appendToLogFile("[ " + (new Date()).toString() + " ] : " + data);
+};
+
+/**
  * @function success Adds some styling when logging some success information to the console using bootstrap 4 theme
  *
  * @param {string} info The info to log
@@ -150,9 +185,22 @@ logger.success = function(info, background = false) {
  */
 logger.warning = function(data, background = false) {
     // yellow
-    console.log(background ? chalk.bgYellow(data) : chalk.rgb(255, 193, 7)(data));
+    console.log(background ? chalk.bgRgb(255, 193, 7)(data) : chalk.rgb(255, 193, 7)(data));
     logger.appendToLogFile("WARNING [ " + (new Date()).toString() + " ] : " + data);
 };
+
+/**
+ * @function white Adds some styling when logging some information to the console with the bootstrap4 white style
+ *
+ * @param {string} data The data to log as a warning
+ * @param {boolean} background Edit background color instead of text color
+ *
+ */
+logger.white = function(data, background = false) {
+    console.log(background ? chalk.bgWhiteBright.black(data) : chalk.whiteBright(data));
+    logger.appendToLogFile("[ " + (new Date()).toString() + " ] : " + data);
+};
+
 
 
 module.exports = logger;
