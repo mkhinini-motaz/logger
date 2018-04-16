@@ -82,6 +82,9 @@ If you want to add some message or data to the log file without showing it on th
     logger.appendToLogFile("message");
 **Attention :** If you disable persisting logs with **logger.persistLogs(falsyValue)**, this method won't do or persist anything.
 
+## Update Notice
+When i first created this package, **msk-log** methods were accepting a single argument as data and the second argument was used to indicate that we want to color the background instead of the text, your code with the previous version will still work but it will not change the background color, consider adding **bg** to the methods names to have the wanted behaviour as desribed above.
+
 ## Copyright
 Feel free to use, modify, publish or sell this package as you like.
 
