@@ -35,19 +35,32 @@ Just call this method with an argument that will evaluate to true if you want to
     logger.persistLogs(truthyValue)
 
 ### Output methods
-**msk-log** has many output methods where their names are inspired from the Bootstrap4 framework so that you feel familiar with it very quickly, most of these methods have two modes, if you pass just a massage it will change the text color, if you add true as a second argument, it will change the background color instead. The **logger.log("msg")** doesn't have the second argument, because it is supposed to be a simple log like **console.log** .
+**msk-log** has many output methods where their names are inspired from the Bootstrap4 framework so that you feel familiar with it very quickly, most of these methods have two modes, if you pass just a massage it will change the text color, All the methods accept any number of arguments to pass to them and behaves like **console.log**.
 
 
-     logger.error(errorObj, [background]);
-     logger.danger("message", [background]);
-     logge.dark("message", [background]);
-     logger.info("message", [background]);
-     logger.light("message", [background]);
+     logger.error(errorObj);
+     logger.danger("message");
+     logge.dark("message");
+     logger.info("message");
+     logger.light("message");
      logger.log("message");
-     logger.primary("message", [background]);
-     logger.secondary("message", [background]);
-     logger.success("message", [background]);
-     logger.warning("message", [background]);
+     logger.primary("message");
+     logger.secondary("message");
+     logger.success("message");
+     logger.warning("message");
+
+     If you want to change the background color instead of the text color, just add **Bg** to the method name, here is a list of the available methods that changes the background.
+
+
+          logger.dangerBg("message");
+          logge.darkBg("message");
+          logger.infoBg("message");
+          logger.lightBg("message");
+          logger.logBg("message");
+          logger.primaryBg("message");
+          logger.secondaryBg("message");
+          logger.successBg("message");
+          logger.warningBg("message");
 
 The **logger.error** method takes an error object and persists it in the log file after converting it to a JSON string.
 ### Other Methods
