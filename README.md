@@ -65,6 +65,11 @@ If you want to change the background color instead of the text color, just add *
           logger.whiteBg("message", ["message2", ...]);
 
 The **logger.error** method takes an error object and persists it in the log file after converting it to a JSON string.
+All methods mentioned above return the logger object, so it's possible to chain methods calls  like this :
+
+    logger.danger("message 1").info("message 2").success("message 3");
+Each method call will display its arguments in a separate line.
+
 ### Other Methods
 You also have another method available to use, this method was create to help improve your code readability, if you look at its source code, it just insert  line return in the console and in the log file :
 

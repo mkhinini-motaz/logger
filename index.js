@@ -69,15 +69,17 @@ logger.danger = function() {
     var args = Object.values(arguments);
     args.push(chalk.rgb(220, 53, 69));
     this.styleLog.apply(this, args);
+    return this;
 };
 
 /**
- * @function danger Adds some styling to the background when logging some danger info to the console
+ * @function dangerBg Adds some styling to the background when logging some danger info to the console
  */
 logger.dangerBg = function() {
     var args = Object.values(arguments);
     args.push(chalk.bgRed);
     this.styleLog.apply(this, args);
+    return this;
 };
 
 /**
@@ -88,6 +90,7 @@ logger.dangerBg = function() {
 logger.error = function(error) {
     logger.errorLog(error);
     logger.appendToLogFile("ERROR [ " + (new Date()).toString() + " ] : " + JSON.stringify(error));
+    return this;
 };
 
 /**
@@ -97,6 +100,7 @@ logger.dark = function() {
     var args = Object.values(arguments);
     args.push(chalk.black);
     this.styleLog.apply(this, args);
+    return this;
 };
 
 /**
@@ -106,6 +110,7 @@ logger.darkBg = function() {
     var args = Object.values(arguments);
     args.push(chalk.bgRgb(0, 0, 0).whiteBright);
     this.styleLog.apply(this, args);
+    return this;
 };
 
 /**
@@ -115,15 +120,17 @@ logger.info = function() {
     var args = Object.values(arguments);
     args.push(chalk.rgb(23, 162, 184));
     this.styleLog.apply(this, args);
+    return this;
 };
 
 /**
- * @function info Adds some styling to the background like info in Twitter-Bootstrap4 when logging some message to the console
+ * @function infoBg Adds some styling to the background like info in Twitter-Bootstrap4 when logging some message to the console
  */
 logger.infoBg = function() {
     var args = Object.values(arguments);
     args.push(chalk.bgRgb(23, 162, 184));
     this.styleLog.apply(this, args);
+    return this;
 };
 
 /**
@@ -133,15 +140,17 @@ logger.light = function() {
     var args = Object.values(arguments);
     args.push(chalk.white);
     this.styleLog.apply(this, args);
+    return this;
 };
 
 /**
- * @function light Adds some styling to the background when logging some information to the console with the bootstrap4 light style
+ * @function lightBg Adds some styling to the background when logging some information to the console with the bootstrap4 light style
  */
 logger.lightBg = function() {
     var args = Object.values(arguments);
     args.push(chalk.bgWhite.black);
     this.styleLog.apply(this, args);
+    return this;
 };
 
 /**
@@ -150,6 +159,7 @@ logger.lightBg = function() {
 logger.log = function() {
     console.log.apply(console, arguments);
     logger.appendToLogFile(this.treatArguments(arguments));
+    return this;
 }
 
 /**
@@ -158,6 +168,7 @@ logger.log = function() {
 logger.newLine = function() {
     console.log("");
     logger.appendToLogFile("");
+    return this;
 }
 
 /**
@@ -167,6 +178,7 @@ logger.primary = function() {
     var args = Object.values(arguments);
     args.push(chalk.rgb(0, 123, 255));
     this.styleLog.apply(this, args);
+    return this;
 };
 
 /**
@@ -176,6 +188,7 @@ logger.primaryBg = function() {
     var args = Object.values(arguments);
     args.push(chalk.bgRgb(0, 123, 255));
     this.styleLog.apply(this, args);
+    return this;
 };
 
 /**
@@ -185,6 +198,7 @@ logger.secondary = function() {
     var args = Object.values(arguments);
     args.push(chalk.rgb(108, 117, 125));
     this.styleLog.apply(this, args);
+    return this;
 };
 
 /**
@@ -195,6 +209,7 @@ logger.secondaryBg = function() {
     var args = Object.values(arguments);
     args.push(chalk.bgRgb(108, 117, 125));
     this.styleLog.apply(this, args);
+    return this;
 };
 
 /**
@@ -204,15 +219,17 @@ logger.success = function() {
     var args = Object.values(arguments);
     args.push(chalk.rgb(74, 226, 14));
     this.styleLog.apply(this, args);
+    return this;
 };
 
 /**
- * @function success Adds some styling to the background when logging some success information to the console using bootstrap 4 theme
+ * @function successBg Adds some styling to the background when logging some success information to the console using bootstrap 4 theme
  */
 logger.successBg = function() {
     var args = Object.values(arguments);
     args.push(chalk.bgGreen);
     this.styleLog.apply(this, args);
+    return this;
 };
 
 /**
@@ -222,15 +239,17 @@ logger.warning = function() {
     var args = Object.values(arguments);
     args.push(chalk.rgb(255, 193, 7));
     this.styleLog.apply(this, args);
+    return this;
 };
 
 /**
- * @function warning Adds some styling to the background when logging some warning to the console
+ * @function warningBg Adds some styling to the background when logging some warning to the console
  */
 logger.warningBg = function() {
     var args = Object.values(arguments);
     args.push(chalk.bgRgb(255, 193, 7).black);
     this.styleLog.apply(this, args);
+    return this;
 };
 
 /**
@@ -240,16 +259,18 @@ logger.white = function() {
     var args = Object.values(arguments);
     args.push(chalk.whiteBright);
     this.styleLog.apply(this, args);
+    return this;
 };
 
 
 /**
- * @function white Adds some styling to the background when logging some information to the console with the bootstrap4 white style
+ * @function whiteBg Adds some styling to the background when logging some information to the console with the bootstrap4 white style
  */
 logger.whiteBg = function() {
     var args = Object.values(arguments);
     args.push(chalk.bgWhiteBright.black);
     this.styleLog.apply(this, args);
+    return this;
 };
 
 
