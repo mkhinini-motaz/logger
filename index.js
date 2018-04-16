@@ -69,10 +69,22 @@ logger.appendToLogFile = function(data) {
  * @param {string} data The data to log as a danger info
  * @param {boolean} background Edit background color instead of text color
  */
-logger.danger = function(data, background = false) {
-    // yellow
-    console.log(background ? chalk.bgRed(data) : chalk.rgb(220, 53, 69)(data));
-    logger.appendToLogFile("WARNING [ " + (new Date()).toString() + " ] : " + data);
+logger.danger = function() {
+    var args = Object.values(arguments);
+    args.push(chalk.rgb(220, 53, 69));
+    this.styleLog.apply(this, args);
+};
+
+/**
+ * @function danger Adds some styling when logging some danger info to the console
+ *
+ * @param {string} data The data to log as a danger info
+ * @param {boolean} background Edit background color instead of text color
+ */
+logger.dangerBg = function() {
+    var args = Object.values(arguments);
+    args.push(chalk.bgRed);
+    this.styleLog.apply(this, args);
 };
 
 /**
@@ -86,14 +98,27 @@ logger.error = function(error) {
 };
 
 /**
+* @function dark Adds some styling when logging some information to the console with the bootstrap4 dark style
+*
+* @param {string} data The data to log as a danger info
+* @param {boolean} background Edit background color instead of text color
+*/
+logger.dark = function() {
+    var args = Object.values(arguments);
+    args.push(chalk.black);
+    this.styleLog.apply(this, args);
+};
+
+/**
  * @function dark Adds some styling when logging some information to the console with the bootstrap4 dark style
  *
  * @param {string} data The data to log as a danger info
  * @param {boolean} background Edit background color instead of text color
  */
-logger.dark = function(data, background = false) {
-    console.log(background ? chalk.bgRgb(0, 0, 0).whiteBright(data) : chalk.black(data));
-    logger.appendToLogFile("[ " + (new Date()).toString() + " ] : " + data);
+logger.darkBg = function() {
+    var args = Object.values(arguments);
+    args.push(chalk.bgRgb(0, 0, 0).whiteBright);
+    this.styleLog.apply(this, args);
 };
 
 /**
@@ -103,10 +128,23 @@ logger.dark = function(data, background = false) {
  * @param {boolean} background Edit background color instead of text color
  *
  */
-logger.info = function(data, background = false) {
-    // cyan
-    console.log(background ? chalk.bgRgb(23, 162, 184)(data) : chalk.rgb(23, 162, 184)(data));
-    logger.appendToLogFile("[ " + (new Date()).toString() + " ] : " + data);
+logger.info = function() {
+    var args = Object.values(arguments);
+    args.push(chalk.rgb(23, 162, 184));
+    this.styleLog.apply(this, args);
+};
+
+/**
+ * @function info Adds some styling like info in Twitter-Bootstrap4 when logging some message to the console
+ *
+ * @param {string} data The data to log as a warning
+ * @param {boolean} background Edit background color instead of text color
+ *
+ */
+logger.infoBg = function() {
+    var args = Object.values(arguments);
+    args.push(chalk.bgRgb(23, 162, 184));
+    this.styleLog.apply(this, args);
 };
 
 /**
@@ -115,9 +153,22 @@ logger.info = function(data, background = false) {
  * @param {string} data The data to log as a danger info
  * @param {boolean} background Edit background color instead of text color
  */
-logger.light = function(data, background = false) {
-    console.log(background ? chalk.bgWhite.black(data) : chalk.white(data));
-    logger.appendToLogFile("[ " + (new Date()).toString() + " ] : " + data);
+logger.light = function() {
+    var args = Object.values(arguments);
+    args.push(chalk.white);
+    this.styleLog.apply(this, args);
+};
+
+/**
+ * @function light Adds some styling when logging some information to the console with the bootstrap4 light style
+ *
+ * @param {string} data The data to log as a danger info
+ * @param {boolean} background Edit background color instead of text color
+ */
+logger.lightBg = function() {
+    var args = Object.values(arguments);
+    args.push(chalk.bgWhite.black);
+    this.styleLog.apply(this, args);
 };
 
 /**
@@ -125,9 +176,9 @@ logger.light = function(data, background = false) {
  *
  * @param {string} data The data to log
  */
-logger.log = function(data) {
-    console.log(data);
-    logger.appendToLogFile(data);
+logger.log = function() {
+    console.log.apply(console, arguments);
+    logger.appendToLogFile(this.treatArguments(arguments));
 }
 
 /**
@@ -146,10 +197,23 @@ logger.newLine = function() {
  * @param {boolean} background Edit background color instead of text color
  *
  */
-logger.primary = function(data, background = false) {
-    // blue
-    console.log(background ? chalk.bgBlue(data) : chalk.rgb(0, 123, 255)(data));
-    logger.appendToLogFile("[ " + (new Date()).toString() + " ] : " + data);
+logger.primary = function() {
+    var args = Object.values(arguments);
+    args.push(chalk.rgb(0, 123, 255));
+    this.styleLog.apply(this, args);
+};
+
+/**
+ * @function primary Adds some styling like primary in Twitter-Bootstrap4 when logging some message to the console
+ *
+ * @param {string} data The data to log as a warning
+ * @param {boolean} background Edit background color instead of text color
+ *
+ */
+logger.primaryBg = function() {
+    var args = Object.values(arguments);
+    args.push(chalk.bgRgb(0, 123, 255));
+    this.styleLog.apply(this, args);
 };
 
 /**
@@ -159,10 +223,23 @@ logger.primary = function(data, background = false) {
  * @param {boolean} background Edit background color instead of text color
  *
  */
-logger.secondary = function(data, background = false) {
-    // cyan
-    console.log(background ? chalk.bgRgb(108, 117, 125)(data) : chalk.rgb(108, 117, 125)(data));
-    logger.appendToLogFile("[ " + (new Date()).toString() + " ] : " + data);
+logger.secondary = function() {
+    var args = Object.values(arguments);
+    args.push(chalk.rgb(108, 117, 125));
+    this.styleLog.apply(this, args);
+};
+
+/**
+ * @function secondary Adds some styling when logging some information to the console with the bootstrap4 secondary style
+ *
+ * @param {string} data The data to log as a warning
+ * @param {boolean} background Edit background color instead of text color
+ *
+ */
+logger.secondaryBg = function() {
+    var args = Object.values(arguments);
+    args.push(chalk.bgRgb(108, 117, 125));
+    this.styleLog.apply(this, args);
 };
 
 /**
@@ -172,9 +249,21 @@ logger.secondary = function(data, background = false) {
  * @param {boolean} background Edit background color instead of text color *
  */
 logger.success = function(info, background = false) {
-    // green
-    console.log(background ? chalk.bgGreen(info) : chalk.rgb(74, 226, 14)(info));
-    logger.appendToLogFile("[ " + (new Date()).toString() + " ] : " + info);
+    var args = Object.values(arguments);
+    args.push(chalk.rgb(74, 226, 14));
+    this.styleLog.apply(this, args);
+};
+
+/**
+ * @function success Adds some styling when logging some success information to the console using bootstrap 4 theme
+ *
+ * @param {string} info The info to log
+ * @param {boolean} background Edit background color instead of text color *
+ */
+logger.successBg = function(info, background = false) {
+    var args = Object.values(arguments);
+    args.push(chalk.bgGreen);
+    this.styleLog.apply(this, args);
 };
 
 /**
@@ -183,24 +272,91 @@ logger.success = function(info, background = false) {
  * @param {string} data The data to log as a warning
  * @param {boolean} background Edit background color instead of text color
  */
-logger.warning = function(data, background = false) {
-    // yellow
-    console.log(background ? chalk.bgRgb(255, 193, 7)(data) : chalk.rgb(255, 193, 7)(data));
-    logger.appendToLogFile("WARNING [ " + (new Date()).toString() + " ] : " + data);
+logger.warning = function() {
+    var args = Object.values(arguments);
+    args.push(chalk.rgb(255, 193, 7));
+    this.styleLog.apply(this, args);
+};
+
+/**
+ * @function warning Adds some styling when logging some warning to the console
+ *
+ * @param {string} data The data to log as a warning
+ * @param {boolean} background Edit background color instead of text color
+ */
+logger.warningBg = function() {
+    var args = Object.values(arguments);
+    args.push(chalk.bgRgb(255, 193, 7).black);
+    this.styleLog.apply(this, args);
 };
 
 /**
  * @function white Adds some styling when logging some information to the console with the bootstrap4 white style
  *
  * @param {string} data The data to log as a warning
- * @param {boolean} background Edit background color instead of text color
  *
  */
-logger.white = function(data, background = false) {
-    console.log(background ? chalk.bgWhiteBright.black(data) : chalk.whiteBright(data));
-    logger.appendToLogFile("[ " + (new Date()).toString() + " ] : " + data);
+logger.white = function(data) {
+    var args = Object.values(arguments);
+    args.push(chalk.whiteBright);
+    this.styleLog.apply(this, args);
 };
 
 
+/**
+ * @function white Adds some styling when logging some information to the console with the bootstrap4 white style
+ *
+ * @param {string} data The data to log as a warning
+ *
+ */
+logger.whiteBg = function(data) {
+    var args = Object.values(arguments);
+    args.push(chalk.bgWhiteBright.black);
+    this.styleLog.apply(this, args);
+};
+
+
+/**
+ * @function treatArguments Converts the arguments array to a string
+ *
+ * @param {string} args Arguments to be treated
+ *
+ */
+logger.treatArguments = function(args) {
+    if (Array.isArray(args) || typeof args == 'object') {
+        if (args.length == 0) {
+            return "[]";
+        } else if (args.length == 1) {
+            return args[0];
+        } else {
+            let result = [];
+            for (let element of args) {
+                if (element != undefined) {
+                    result.push((typeof element == 'object' && !Array.isArray(element)) ? JSON.stringify(element) : element );
+                }
+            }
+            return (result.length == 1 || ( result.length == 1  && result[result.length] == undefined )) ? result[0] : result.join('  ');
+        }
+    } else {
+        return args;
+    }
+};
+
+/**
+ * @function styleLog Simple function that serves as a wrap for the console.log method with colorful output on the console and allows to persist that log into the log file
+ *
+ */
+logger.styleLog = function() {
+    var chalkStyle = arguments[arguments.length - 1];
+    if (typeof chalkStyle == 'function') {
+        delete arguments[arguments.length - 1];
+        let args = this.treatArguments(arguments)
+        console.log(chalkStyle(args))
+        this.appendToLogFile("[ " + (new Date()).toString() + " ] : " + args);
+    }
+    else {
+        this.log.apply(this, arguments);
+    }
+}
 
 module.exports = logger;
