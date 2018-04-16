@@ -1,5 +1,6 @@
 
 
+
 ## Msk log
 
 **msk-log** is a very simple and small package for all developers that appreciate simple packages, this package simply add some styling to your logs using Twitter/Bootstrap4 colors with the same colors names as methods names for logging.
@@ -35,32 +36,33 @@ Just call this method with an argument that will evaluate to true if you want to
     logger.persistLogs(truthyValue)
 
 ### Output methods
-**msk-log** has many output methods where their names are inspired from the Bootstrap4 framework so that you feel familiar with it very quickly, most of these methods have two modes, if you pass just a massage it will change the text color, All the methods accept any number of arguments to pass to them and behaves like **console.log**.
+**msk-log** has many output methods where their names are inspired from the Bootstrap4 framework so that you feel familiar with it very quickly, most of these methods have two modes, if you pass just a massage it will change the text color, All the methods accept any number of arguments of any type to pass to them and behaves like **console.log**.
 
 
      logger.error(errorObj);
-     logger.danger("message");
-     logge.dark("message");
-     logger.info("message");
-     logger.light("message");
-     logger.log("message");
-     logger.primary("message");
-     logger.secondary("message");
-     logger.success("message");
-     logger.warning("message");
+     logger.danger("message", ["message2", ...]);
+     logge.dark("message", ["message2", ...]);
+     logger.info("message", ["message2", ...]);
+     logger.light("message", ["message2", ...]);
+     logger.log("message", ["message2", ...]);
+     logger.primary("message", ["message2", ...]);
+     logger.secondary("message", ["message2", ...]);
+     logger.success("message", ["message2", ...]);
+     logger.warning("message", ["message2", ...]);
+     logger.white("message", ["message2", ...]);
 
-     If you want to change the background color instead of the text color, just add **Bg** to the method name, here is a list of the available methods that changes the background.
+If you want to change the background color instead of the text color, just add **Bg** to the method name, here is a list of the available methods that changes the background.
 
 
-          logger.dangerBg("message");
-          logge.darkBg("message");
-          logger.infoBg("message");
-          logger.lightBg("message");
-          logger.logBg("message");
-          logger.primaryBg("message");
-          logger.secondaryBg("message");
-          logger.successBg("message");
-          logger.warningBg("message");
+          logger.dangerBg("message", ["message2", ...]);
+          logge.darkBg("message", ["message2", ...]);
+          logger.infoBg("message", ["message2", ...]);
+          logger.lightBg("message", ["message2", ...]);
+          logger.primaryBg("message", ["message2", ...]);
+          logger.secondaryBg("message", ["message2", ...]);
+          logger.successBg("message", ["message2", ...]);
+          logger.warningBg("message", ["message2", ...]);
+          logger.whiteBg("message", ["message2", ...]);
 
 The **logger.error** method takes an error object and persists it in the log file after converting it to a JSON string.
 ### Other Methods
