@@ -1,6 +1,6 @@
 {
   "name": "msk-log",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "simple-logger is package for all developers that appreciate simple packages, this package simply add some styling to your logs using Twitter/Bootstrap4 colors with the same colors names as methods names for logging",
   "main": "index.js",
   "scripts": {
@@ -26,15 +26,20 @@
     "logger",
     "simple",
     "simple-logger",
-    "msaken",
-    "m'saken",
-    "msk",
-    "4070",
-    "tunisie",
-    "tunisia",
+    "console",
+    "console log",
+    "wrapper",
+    "minimum dependencies",
     "motaz",
     "moatez",
     "mkhinini",
-    "minimum dependencies"
+    "msaken",
+    "m'saken",
+    "msk",
+    "paris",
+    "montpellier",
+    "4070",
+    "tunisie",
+    "tunisia"
   ]
 }

@@ -13,6 +13,7 @@ var logFilePath = dir +'/system.log';
 
 logger.isPersistingLogs = true;
 
+// If the logs folder doesn't exist, create it. These methods are called in Sync mode to ensure that the folder exists before writing to it.
 if (!fs.existsSync(dir)){
     fs.mkdirSync(dir);
 }
@@ -43,7 +44,6 @@ logger.errorLog = function(error) {
 
 /**
  * @function appendToLogFile Allows you to append text to a file, this function has been writting in callback style following the official documentation of node.js.
- * This function will not be exposed outside this file.
  *
  * @param {string} data  Data to append into the file
  */
@@ -52,11 +52,11 @@ logger.appendToLogFile = function(data) {
         return;
     }
     fs.open(logFilePath, 'a', (error, file) => {
-        logger.errorLog(error);
+        this.errorLog(error);
         fs.appendFile(file, data + "\n", 'utf8', (error) => {
-            logger.errorLog(error);
+            this.errorLog(error);
             fs.close(file, (error) => {
-                logger.errorLog(error);
+                this.errorLog(error);
             });
         });
     });
@@ -88,8 +88,8 @@ logger.dangerBg = function() {
  * @param {Object} error The error object to log
  */
 logger.error = function(error) {
-    logger.errorLog(error);
-    logger.appendToLogFile("ERROR [ " + (new Date()).toString() + " ] : " + JSON.stringify(error));
+    this.errorLog(error);
+    this.appendToLogFile("ERROR [ " + (new Date()).toString() + " ] : " + JSON.stringify(error));
     return this;
 };
 
@@ -158,7 +158,7 @@ logger.lightBg = function() {
  */
 logger.log = function() {
     console.log.apply(console, arguments);
-    logger.appendToLogFile(this.treatArguments(arguments));
+    this.appendToLogFile(this.treatArguments(arguments));
     return this;
 }
 
@@ -167,7 +167,7 @@ logger.log = function() {
  */
 logger.newLine = function() {
     console.log("");
-    logger.appendToLogFile("");
+    this.appendToLogFile("");
     return this;
 }
 
@@ -236,9 +236,9 @@ logger.successBg = function() {
  * @function warning Adds some styling to the text when logging some warning to the console
  */
 logger.warning = function() {
-    var args = Object.values(arguments);
-    args.push(chalk.rgb(255, 193, 7));
-    this.styleLog.apply(this, args);
+    var args = this.treatArguments(Object.values(arguments));
+    console.log(chalk.rgb(255, 193, 7)(args));
+    this.appendToLogFile("WARNING [ " + (new Date()).toString() + " ] : " + args);
     return this;
 };
 
@@ -246,9 +246,9 @@ logger.warning = function() {
  * @function warningBg Adds some styling to the background when logging some warning to the console
  */
 logger.warningBg = function() {
-    var args = Object.values(arguments);
-    args.push(chalk.bgRgb(255, 193, 7).black);
-    this.styleLog.apply(this, args);
+    var args = this.treatArguments(Object.values(arguments));
+    console.log(chalk.bgRgb(255, 193, 7).black(args));
+    this.appendToLogFile("WARNING [ " + (new Date()).toString() + " ] : " + args);
     return this;
 };
 
@@ -275,7 +275,7 @@ logger.whiteBg = function() {
 
 
 /**
- * @function treatArguments Converts the arguments array to a string
+ * @function treatArguments Converts an array or object to a string, this function was created to make writing to the log file possible like we write to the console with console.log(param1, param2, ...), ==> keep valus only, keys are discarded
  *
  * @param {string} args Arguments to be treated
  *
@@ -288,20 +288,21 @@ logger.treatArguments = function(args) {
             return args[0];
         } else {
             let result = [];
-            for (let element of args) {
-                if (element != undefined) {
-                    result.push((typeof element == 'object' && !Array.isArray(element)) ? JSON.stringify(element) : element );
+            for (let index in args) {
+                if (args[index] != undefined) {
+                    result.push((typeof args[index] == 'object' && !Array.isArray(args[index])) ? JSON.stringify(args[index]) : args[index] );
                 }
             }
-            return (result.length == 1 || ( result.length == 1  && result[result.length] == undefined )) ? result[0] : result.join('  ');
+            return (result.length == 1) ? result[0] : result.join('  ');
         }
     } else {
+        // if the arguments passed to this method is not an array or object, it's returned as it is
         return args;
     }
 };
 
 /**
- * @function styleLog Simple function that serves as a base for all log methods, it also persists data to the log file
+ * @function styleLog Simple function that serves as a base for all log methods, it also persists data to the log file, this method is used by all the other methods
  *
  */
 logger.styleLog = function() {

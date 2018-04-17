@@ -1,6 +1,7 @@
 var logger = require('./index.js');
+var chalk = require('chalk');
 
-logger.isPersistingLogs = false; // ==> because you don't want these dummy logs in your log file
+// logger.isPersistingLogs = false; // ==> because you don't want these dummy logs in your log file
 
 
 
@@ -57,6 +58,8 @@ logger.error({ name: "SomeError", message: "The error description", erroCode: 1 
 
     .newLine();
 
-logger.styleLog("This is a style log, it just calls console.log and persist logs into a file", {a:5,b:9}, 123456789, false, {ap:'lll', az: 259, ss: 77});
+logger.styleLog("This is a style log, it just calls console.log and persist logs into a file", {a:5,b:9}, 123456789, false, {ap:'lll', az: 259, ss: 77}, chalk.red.bgYellow);
 
 logger.isPersistingLogs = true;
+
+logger.appendToLogFile(logger.treatArguments({a:5,b:6,j:3}));
